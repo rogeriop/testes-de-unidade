@@ -1,4 +1,4 @@
-package br.com.caelum.leilao.dominio;
+package br.com.caelum.leilao.servicos;
 
 public class AnoBissexto {
 	public Boolean ehBissexto(int ano) {

@@ -1,6 +1,6 @@
 package br.com.caelum.leilao.servicos;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -8,6 +8,8 @@ import br.com.caelum.leilao.dominio.Lance;
 import br.com.caelum.leilao.dominio.Leilao;
 import br.com.caelum.leilao.dominio.Usuario;
 public class LeilaoTest {
+	
+	
 	
 	@Test
 	public void deveReceberUmLance() {

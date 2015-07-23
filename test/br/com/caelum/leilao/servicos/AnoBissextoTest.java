@@ -1,6 +1,8 @@
-package br.com.caelum.leilao.dominio;
+package br.com.caelum.leilao.servicos;
 
 import org.junit.Test;
+
+import br.com.caelum.leilao.servicos.AnoBissexto;
 import static org.junit.Assert.*;
 public class AnoBissextoTest {
 
