@@ -36,6 +36,24 @@ public class Leilao {
 		return lances.get(lances.size()-1);
 	}
 
+	public void dobraLance(Lance lance) {
+		if(lances.isEmpty() || podeDarLance(lance.getUsuario())) {
+			double ultimoLance = ultimoLanceDoUsuario(lance.getUsuario());
+			if (ultimoLance > 0) {
+				lance.setValor(ultimoLance * 2);
+				lances.add(lance);
+			}
+		}
+	}
+	
+	public double ultimoLanceDoUsuario(Usuario usuario) {
+		double ultimoLance = 0;
+		for(Lance l : lances) {
+			if(l.getUsuario().equals(usuario)) ultimoLance = l.getValor();
+		}
+		return ultimoLance;
+	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
