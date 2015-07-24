@@ -6,6 +6,7 @@ public class Lance {
 	private double valor;
 	
 	public Lance(Usuario usuario, double valor) {
+		if(valor<=0) throw new IllegalArgumentException();
 		this.usuario = usuario;
 		this.valor = valor;
 	}
@@ -16,10 +17,6 @@ public class Lance {
 
 	public double getValor() {
 		return valor;
-	}
-	
-	public void setValor(double valor) {
-		this.valor = valor;
 	}
 	
 }

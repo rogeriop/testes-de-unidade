@@ -1,12 +1,12 @@
 package br.com.caelum.leilao.servicos;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.caelum.leilao.builder.CriadorDeLeilao;
@@ -24,7 +24,7 @@ public class AvaliadorTest {
 	private Usuario joice;
 	private Usuario luana;
 	private Usuario mario;
-//
+/*
 	@BeforeClass
 	public static void testandoBeforeClass() {
 	  System.out.println("before class");
@@ -35,12 +35,13 @@ public class AvaliadorTest {
 	  System.out.println("after class");
 	}	
 	
-//	
+*/	
 	
 	
 	@Before
 	public void setUp() {
 		this.leiloeiro = new Avaliador();
+		
 		this.marcelo = new Usuario("Marcelo");
 		this.marcela = new Usuario("Marcela");
 		this.antonio = new Usuario("Antônio");
@@ -50,6 +51,13 @@ public class AvaliadorTest {
 		this.mario = new Usuario("Mario");
 	}
 
+
+	@Test(expected=RuntimeException.class)
+	public void naoDeveAvaliarLeiloesSemNenumLanceDado() {
+		Leilao leilao = new CriadorDeLeilao().para("Playstation 3 novo").constroi();
+		
+		leiloeiro.avalia(leilao);
+	}
 	
 	@Test
 	public void deveEntenderLancesEmOrdemCrescente() {
@@ -64,12 +72,15 @@ public class AvaliadorTest {
 		leiloeiro.avalia(leilao);
 
 		// *Compara a saída com o esperado
+/*
 		double maiorEsperado = 1000;
 		double menorEsperado = 200;
 
 		assertEquals(maiorEsperado, leiloeiro.getMaiorLance(), 0.00001);
 		assertEquals(menorEsperado, leiloeiro.getMenorLance(), 0.00001);
-
+*/
+		assertThat(leiloeiro.getMaiorLance(), equalTo(1000.0));
+		assertThat(leiloeiro.getMenorLance(), equalTo(200.0));
 	}
 
 	@Test
@@ -165,17 +176,5 @@ public class AvaliadorTest {
 		
 	}
 
-	@Test
-	public void deveDevolverListaVaziaRecebendoNenhumLance() {
-		
-		Leilao leilao = new Leilao("Joia rara");
-		
-		leiloeiro.avalia(leilao);
-		
-		List<Lance> maiores = leiloeiro.getTresMaiores();
-		
-		assertEquals(0, maiores.size());
-		
-	}
 	
 }

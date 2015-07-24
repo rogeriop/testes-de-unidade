@@ -40,8 +40,8 @@ public class Leilao {
 		if(lances.isEmpty() || podeDarLance(lance.getUsuario())) {
 			double ultimoLance = ultimoLanceDoUsuario(lance.getUsuario());
 			if (ultimoLance > 0) {
-				lance.setValor(ultimoLance * 2);
-				lances.add(lance);
+				Lance lanceNovoValor = new Lance(lance.getUsuario(), ultimoLance * 2);
+				lances.add(lanceNovoValor);
 			}
 		}
 	}
